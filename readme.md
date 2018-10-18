@@ -1,7 +1,7 @@
 ## Conver mp3 to mp4 using single image
 
 ### Requirements
-** ffmpeg ** 
+**ffmpeg** 
 `brew install ffmpeg`
 
 ## Run instructions
