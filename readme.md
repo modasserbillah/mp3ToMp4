@@ -1,4 +1,4 @@
-## Conver mp3 to mp4 using any number of images
+## Convert mp3 to mp4 using any number of images
 
 ### Requirements
 **ffmpeg** 

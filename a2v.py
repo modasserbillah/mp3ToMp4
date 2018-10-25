@@ -19,6 +19,7 @@ ffprobeOutput = json.loads(ffprobeOutput)
 duration = ffprobeOutput['format']['duration']
 duration = int(float(duration))
 time_for_each_image = duration // number_of_images
+fade_out_at = time_for_each_image - 1
 
 # this forces all input images to resize to given height and width above
 #the final string will look like the following, we'll construct it incrementally to avoid repeating
@@ -32,7 +33,7 @@ time_for_each_image = duration // number_of_images
 
 filter_string = f"\""
 for n in range(number_of_images):
-    filter_string += f"[{n}]scale={height}:{width}:force_original_aspect_ratio=decrease,pad={height}:{width}:(ow-iw)/2:(oh-ih)/2,setsar=1[i{n}];"
+    filter_string += f"[{n}]scale={height}:{width}:force_original_aspect_ratio=decrease,pad={height}:{width}:(ow-iw)/2:(oh-ih)/2,setsar=1, fade=t=in:st=0:d=2,fade=t=out:st={fade_out_at}:d=2[i{n}];"
 
 for n in range(number_of_images):
     filter_string += f"[i{n}]"
